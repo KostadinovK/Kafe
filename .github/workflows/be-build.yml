@@ -4,11 +4,11 @@ on:
   push:
     branches: [ master ]
     paths:
-      - './BE/Kafe/**'
+      - 'BE/Kafe/**'
       - '.github/workflows/be-build.yml'
   pull_request:
     paths:
-      - './BE/Kafe/**'
+      - 'BE/Kafe/**'
       - '.github/workflows/be-build.yml'
 jobs:
   build:

@@ -3,8 +3,13 @@ name: BE Build Check
 on:
   push:
     branches: [ master ]
+    paths:
+      - './BE/Kafe/**'
+      - '.github/workflows/be-build.yml'
   pull_request:
-
+    paths:
+      - './BE/Kafe/**'
+      - '.github/workflows/be-build.yml'
 jobs:
   build:
     runs-on: ubuntu-latest

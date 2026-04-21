@@ -1,0 +1,36 @@
+name: FE Build Check
+
+on:
+  push:
+    branches: [ master ]
+    paths:
+      - './FE/kafe/**'
+      - '.github/workflows/fe-build.yml'
+  pull_request:
+    paths:
+      - './FE/kafe/**'
+      - '.github/workflows/fe-build.yml'
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    defaults:
+      run:
+        working-directory: ./FE/kafe
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: ./FE/kafe/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build
+        run: npm run build
